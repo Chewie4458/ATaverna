@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/container_tela_login"
+  android:layout_width="match_parent"
+  android:layout_height="800dp">
+  
+  <ImageView
+    android:id="@+id/image_rectangle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/image_rectangle"
+    android:scaleType="centerCrop" />
+  
+  <ImageView
+    android:id="@+id/image_design_sem_nome"
+    android:layout_width="239.67dp"
+    android:layout_height="239.67dp"
+    android:layout_marginLeft="60dp"
+    android:layout_marginRight="60.33dp"
+    android:layout_marginTop="139.33dp"
+    android:layout_marginBottom="421dp"
+    android:scaleType="centerInside"
+    android:src="@drawable/image_design_sem_nome" />
+  
+  <FrameLayout
+    android:id="@+id/container_group"
+    android:layout_width="202.33dp"
+    android:layout_height="40dp"
+    android:layout_marginLeft="78.67dp"
+    android:layout_marginBottom="266.67dp"
+    android:layout_gravity="bottom|left">
+    
+    <ImageView
+      android:id="@+id/image_rectangle1"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:background="@drawable/image_rectangle1"
+      android:scaleType="centerCrop" />
+    
+    <TextView
+      android:id="@+id/text_login_google"
+      android:layout_width="match_parent"
+      android:layout_height="21.67dp"
+      android:layout_marginLeft="46.33dp"
+      android:layout_marginRight="21.33dp"
+      android:layout_marginTop="9.17dp"
+      android:layout_marginBottom="9.17dp"
+      android:gravity="left|center_vertical"
+      android:includeFontPadding="false"
+      android:maxLines="1"
+      android:singleLine="true"
+      android:text="Login com Google"
+      android:textColor="#FF000000"
+      android:textSize="16.67dp" />
+    
+    <ImageView
+      android:id="@+id/image_google"
+      android:layout_width="18dp"
+      android:layout_height="18dp"
+      android:layout_marginLeft="14.33dp"
+      android:layout_marginTop="11dp"
+      android:layout_marginBottom="11dp"
+      android:layout_gravity="left"
+      android:scaleType="centerInside"
+      android:src="@drawable/image_google" />
+  </FrameLayout>
+</FrameLayout>

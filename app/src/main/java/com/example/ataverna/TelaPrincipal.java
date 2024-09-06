@@ -2,7 +2,7 @@ package com.example.ataverna;
 
 import android.os.Bundle;
 
-public class TelaLogin extends BaseMainActivity {
+public class TelaPrincipal extends BaseMainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         

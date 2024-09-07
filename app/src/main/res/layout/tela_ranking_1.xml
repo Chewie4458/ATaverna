@@ -7,20 +7,20 @@
     android:layout_height="match_parent">
 
   <ImageView
-      android:id="@+id/container_ranking_rectangle"
+      android:id="@+id/bkgTelaRanking"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="@drawable/container_ranking_rectangle"
       android:scaleType="centerCrop"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.0" />
 
   <ImageView
-      android:id="@+id/container_ranking_rectangle1"
+      android:id="@+id/imgAlbumRanking"
       android:layout_width="266.67dp"
       android:layout_height="266.67dp"
       android:background="@drawable/container_ranking_rectangle1"
@@ -29,75 +29,110 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.502"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/container_ranking_rectangle"
-      app:layout_constraintVertical_bias="0.11" />
+      app:layout_constraintTop_toTopOf="@+id/bkgTelaRanking"
+      app:layout_constraintVertical_bias="0.075" />
 
   <ImageView
-      android:id="@+id/ic_star_outline"
-      android:layout_width="50dp"
-      android:layout_height="50dp"
-      android:scaleType="centerInside"
-      android:src="@drawable/ic_star_outline"
-      tools:layout_editor_absoluteX="242dp"
-      tools:layout_editor_absoluteY="392dp" />
-
-  <ImageView
-      android:id="@+id/ic_star_outline1"
-      android:layout_width="50dp"
-      android:layout_height="50dp"
-      android:scaleType="centerInside"
-      android:src="@drawable/ic_star_outline1"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/ic_star_outline"
-      tools:layout_editor_absoluteY="392dp" />
-
-  <ImageView
-      android:id="@+id/ic_star_outline2"
-      android:layout_width="50dp"
-      android:layout_height="50dp"
-      android:scaleType="centerInside"
-      android:src="@drawable/ic_star_outline2"
-      app:layout_constraintStart_toStartOf="parent"
-      tools:layout_editor_absoluteY="442dp" />
-
-  <ImageView
-      android:id="@+id/ic_star_outline3"
-      android:layout_width="50dp"
-      android:layout_height="50dp"
-      android:scaleType="centerInside"
-      android:src="@drawable/ic_star_outline3"
-      tools:layout_editor_absoluteX="158dp"
-      tools:layout_editor_absoluteY="392dp" />
-
-  <ImageView
-      android:id="@+id/ic_star_outline3"
-      android:layout_width="50dp"
-      android:layout_height="50dp"
-      android:scaleType="centerInside"
-      android:src="@drawable/ic_star_outline3"
-      tools:layout_editor_absoluteY="392dp" />
-
-  <ImageView
-      android:id="@+id/container_ranking_rectangle2"
-      android:layout_width="355dp"
-      android:layout_height="244dp"
+      android:id="@+id/imgComentarioRanking"
+      android:layout_width="332dp"
+      android:layout_height="202dp"
+      android:layout_marginBottom="16dp"
       android:background="@drawable/container_ranking_rectangle2"
       android:scaleType="centerInside"
-      app:layout_constraintBottom_toBottomOf="@+id/container_ranking_rectangle"
+      app:layout_constraintBottom_toBottomOf="@+id/bkgTelaRanking"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
+      app:layout_constraintHorizontal_bias="0.505"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imgAlbumRanking"
+      app:layout_constraintVertical_bias="1.0" />
 
-  <ImageView
-      android:id="@+id/container_ranking_vector1"
-      android:layout_width="45dp"
-      android:layout_height="28dp"
-      android:scaleType="centerInside"
-      android:src="@drawable/container_ranking_vector1"
+  <ImageButton
+      android:id="@+id/btnVoltarRanking"
+      android:layout_width="33dp"
+      android:layout_height="24dp"
+      android:background="#00FFFFFF"
+      android:scaleType="fitCenter"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.062"
+      app:layout_constraintHorizontal_bias="0.039"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.027" />
+      app:layout_constraintVertical_bias="0.016"
+      app:srcCompat="@drawable/container_ranking_vector1" />
+
+  <ImageButton
+      android:id="@+id/btnEstrelaRanking_3"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_marginTop="73dp"
+      android:layout_marginBottom="123dp"
+      android:background="#00FFFFFF"
+      android:scaleType="fitCenter"
+      app:layout_constraintBottom_toTopOf="@+id/imgComentarioRanking"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imgAlbumRanking"
+      app:layout_constraintVertical_bias="0.0"
+      app:srcCompat="@drawable/container_ranking_vector" />
+
+  <ImageButton
+      android:id="@+id/btnEstrelaRanking_2"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_marginTop="73dp"
+      android:layout_marginBottom="123dp"
+      android:background="#00FFFFFF"
+      android:scaleType="fitCenter"
+      app:layout_constraintBottom_toTopOf="@+id/imgComentarioRanking"
+      app:layout_constraintEnd_toStartOf="@+id/btnEstrelaRanking_3"
+      app:layout_constraintTop_toBottomOf="@+id/imgAlbumRanking"
+      app:layout_constraintVertical_bias="0.0"
+      app:srcCompat="@drawable/container_ranking_vector" />
+
+  <ImageButton
+      android:id="@+id/btnEstrelaRanking_4"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_marginTop="73dp"
+      android:layout_marginBottom="123dp"
+      android:background="#00FFFFFF"
+      android:scaleType="fitCenter"
+      app:layout_constraintBottom_toTopOf="@+id/imgComentarioRanking"
+      app:layout_constraintStart_toEndOf="@+id/btnEstrelaRanking_3"
+      app:layout_constraintTop_toBottomOf="@+id/imgAlbumRanking"
+      app:layout_constraintVertical_bias="0.0"
+      app:srcCompat="@drawable/container_ranking_vector" />
+
+  <ImageButton
+      android:id="@+id/btnEstrelaRanking_1"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_marginTop="73dp"
+      android:layout_marginBottom="123dp"
+      android:background="#00FFFFFF"
+      android:scaleType="fitCenter"
+      app:layout_constraintBottom_toTopOf="@+id/imgComentarioRanking"
+      app:layout_constraintEnd_toStartOf="@+id/btnEstrelaRanking_2"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imgAlbumRanking"
+      app:layout_constraintVertical_bias="0.0"
+      app:srcCompat="@drawable/container_ranking_vector" />
+
+  <ImageButton
+      android:id="@+id/btnEstrelaRanking_5"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_marginTop="73dp"
+      android:layout_marginBottom="123dp"
+      android:background="#00FFFFFF"
+      android:scaleType="fitCenter"
+      app:layout_constraintBottom_toTopOf="@+id/imgComentarioRanking"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toEndOf="@+id/btnEstrelaRanking_4"
+      app:layout_constraintTop_toBottomOf="@+id/imgAlbumRanking"
+      app:layout_constraintVertical_bias="0.0"
+      app:srcCompat="@drawable/container_ranking_vector" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

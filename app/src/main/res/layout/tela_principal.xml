@@ -1,170 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="800dp">
-  
-  <ImageView
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/drawable_shape"
-    android:scaleType="centerCrop" />
-  
+    android:layout_height="match_parent">
+
   <ImageView
-    android:layout_width="306.67dp"
-    android:layout_height="41.67dp"
-    android:layout_marginLeft="26.67dp"
-    android:layout_marginRight="26.67dp"
-    android:layout_marginTop="35.67dp"
-    android:layout_marginBottom="722.67dp"
-    android:background="@drawable/drawable_shape_1"
-    android:scaleType="centerInside" />
-  
+      android:id="@+id/bkgTelaPrincipal"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:srcCompat="@drawable/container_ranking_rectangle"
+      tools:layout_editor_absoluteX="0dp"
+      tools:layout_editor_absoluteY="0dp" />
+
   <ImageView
-    android:layout_width="23.33dp"
-    android:layout_height="23.33dp"
-    android:layout_marginLeft="39.33dp"
-    android:layout_marginRight="297.33dp"
-    android:layout_marginTop="44.67dp"
-    android:layout_marginBottom="732dp"
-    android:scaleType="centerInside"
-    android:src="@drawable/drawable_image" />
-  
+      android:id="@+id/icPesquisaPrincipal"
+      android:layout_width="23.33dp"
+      android:layout_height="23.33dp"
+      android:scaleType="centerInside"
+      android:src="@drawable/drawable_image"
+      app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+      app:layout_constraintEnd_toEndOf="@+id/imageButton"
+      app:layout_constraintHorizontal_bias="0.028"
+      app:layout_constraintStart_toStartOf="@+id/imageButton"
+      app:layout_constraintTop_toTopOf="@+id/imageButton"
+      tools:visibility="visible" />
+
   <TextView
-    android:layout_width="match_parent"
-    android:layout_height="32dp"
-    android:layout_marginLeft="26.67dp"
-    android:layout_marginRight="240.33dp"
-    android:layout_marginTop="109.5dp"
-    android:layout_marginBottom="658.5dp"
-    android:gravity="left|center_vertical"
-    android:includeFontPadding="false"
-    android:maxLines="1"
-    android:singleLine="true"
-    android:text="Músicas"
-    android:textColor="#FFFFFFFF"
-    android:textSize="25.67dp" />
-  
+      android:id="@+id/lblMusicaTelaPrincipal"
+      android:layout_width="123dp"
+      android:layout_height="40dp"
+      android:layout_marginTop="12dp"
+      android:fontFamily="@font/gemunu_libre_bold"
+      android:gravity="left|center_vertical"
+      android:includeFontPadding="false"
+      android:maxLines="1"
+      android:singleLine="true"
+      android:text="Músicas"
+      android:textColor="#FFFFFFFF"
+      android:textSize="25.67dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.233"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imageButton"
+      tools:visibility="visible" />
+
   <TextView
-    android:layout_width="match_parent"
-    android:layout_height="32dp"
-    android:layout_marginLeft="26.67dp"
-    android:layout_marginRight="252.67dp"
-    android:layout_marginTop="297.5dp"
-    android:layout_marginBottom="470.5dp"
-    android:gravity="left|center_vertical"
-    android:includeFontPadding="false"
-    android:maxLines="1"
-    android:singleLine="true"
-    android:text="Álbuns"
-    android:textColor="#FFFFFFFF"
-    android:textSize="25.67dp" />
-  
+      android:id="@+id/lblAlbumTelaPrincipal"
+      android:layout_width="128dp"
+      android:layout_height="33dp"
+      android:layout_marginTop="20dp"
+      android:fontFamily="@font/gemunu_libre_bold"
+      android:gravity="left|center_vertical"
+      android:includeFontPadding="false"
+      android:maxLines="1"
+      android:singleLine="true"
+      android:text="Álbuns"
+      android:textColor="#FFFFFFFF"
+      android:textSize="25.67dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.259"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imgMusicas_1"
+      tools:visibility="visible" />
+
   <TextView
-    android:layout_width="match_parent"
-    android:layout_height="32dp"
-    android:layout_marginLeft="19.67dp"
-    android:layout_marginRight="245dp"
-    android:layout_marginTop="485.5dp"
-    android:layout_marginBottom="282.5dp"
-    android:gravity="left|center_vertical"
-    android:includeFontPadding="false"
-    android:maxLines="1"
-    android:singleLine="true"
-    android:text="Rankers"
-    android:textColor="#FFFFFFFF"
-    android:textSize="25.67dp" />
-  
+      android:id="@+id/lblRankersTelaPrincipal"
+      android:layout_width="148dp"
+      android:layout_height="36dp"
+      android:layout_marginTop="28dp"
+      android:fontFamily="@font/gemunu_libre_bold"
+      android:gravity="left|center_vertical"
+      android:includeFontPadding="false"
+      android:maxLines="1"
+      android:singleLine="true"
+      android:text="Rankers"
+      android:textColor="#FFFFFFFF"
+      android:textSize="25.67dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.276"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imgAlbum_1"
+      tools:visibility="visible" />
+
   <ImageView
-    android:layout_width="116.67dp"
-    android:layout_height="116.67dp"
-    android:layout_marginLeft="19.67dp"
-    android:layout_marginRight="223.67dp"
-    android:layout_marginTop="148.67dp"
-    android:layout_marginBottom="534.67dp"
-    android:background="@drawable/drawable_shape_2"
-    android:scaleType="centerInside" />
-  
+      android:id="@+id/imgMusicas_1"
+      android:layout_width="116.67dp"
+      android:layout_height="116.67dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="20dp"
+      android:background="@drawable/drawable_shape_2"
+      android:scaleType="centerInside"
+      app:layout_constraintEnd_toStartOf="@+id/imgMusicas_2"
+      app:layout_constraintHorizontal_bias="0.882"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/lblMusicaTelaPrincipal"
+      tools:visibility="visible" />
+
   <ImageView
-    android:layout_width="116.67dp"
-    android:layout_height="116.67dp"
-    android:layout_marginLeft="153.67dp"
-    android:layout_marginRight="89.67dp"
-    android:layout_marginTop="148.67dp"
-    android:layout_marginBottom="534.67dp"
-    android:background="@drawable/drawable_shape_3"
-    android:scaleType="centerInside" />
-  
+      android:id="@+id/imgAlbum_2"
+      android:layout_width="116.67dp"
+      android:layout_height="116.67dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="100dp"
+      android:background="@drawable/drawable_shape_3"
+      android:scaleType="centerInside"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/lblAlbumTelaPrincipal"
+      tools:visibility="visible" />
+
   <ImageView
-    android:layout_width="116.67dp"
-    android:layout_height="116.67dp"
-    android:layout_marginLeft="19.67dp"
-    android:layout_marginRight="223.67dp"
-    android:layout_marginTop="336.67dp"
-    android:layout_marginBottom="346.67dp"
-    android:background="@drawable/drawable_shape_4"
-    android:scaleType="centerInside" />
-  
+      android:id="@+id/imgMusicas_2"
+      android:layout_width="116.67dp"
+      android:layout_height="116.67dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="100dp"
+      android:background="@drawable/drawable_shape_4"
+      android:scaleType="centerInside"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/lblMusicaTelaPrincipal"
+      tools:visibility="visible" />
+
   <ImageView
-    android:layout_width="116.67dp"
-    android:layout_height="116.67dp"
-    android:layout_marginLeft="153.67dp"
-    android:layout_marginRight="89.67dp"
-    android:layout_marginTop="336.67dp"
-    android:layout_marginBottom="346.67dp"
-    android:background="@drawable/drawable_shape_5"
-    android:scaleType="centerInside" />
-  
+      android:id="@+id/imgAlbum_1"
+      android:layout_width="116.67dp"
+      android:layout_height="116.67dp"
+      android:layout_marginTop="12dp"
+      android:layout_marginEnd="20dp"
+      android:background="@drawable/drawable_shape_5"
+      android:scaleType="centerInside"
+      app:layout_constraintEnd_toStartOf="@+id/imgAlbum_2"
+      app:layout_constraintHorizontal_bias="0.882"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/lblAlbumTelaPrincipal"
+      tools:visibility="visible" />
+
   <ImageView
-    android:layout_width="306.67dp"
-    android:layout_height="96.67dp"
-    android:layout_marginLeft="26.67dp"
-    android:layout_marginRight="26.67dp"
-    android:layout_marginTop="540.33dp"
-    android:layout_marginBottom="163dp"
-    android:background="@drawable/drawable_shape_6"
-    android:scaleType="centerInside" />
-  
+      android:id="@+id/imgRankers_1"
+      android:layout_width="306.67dp"
+      android:layout_height="96.67dp"
+      android:layout_marginTop="31dp"
+      android:layout_marginBottom="24dp"
+      android:background="@drawable/drawable_shape_6"
+      android:scaleType="centerInside"
+      app:layout_constraintBottom_toTopOf="@+id/imgRankers_2"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.503"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/lblRankersTelaPrincipal"
+      app:layout_constraintVertical_bias="0.0"
+      tools:visibility="visible" />
+
   <ImageView
-    android:layout_width="306.67dp"
-    android:layout_height="83.33dp"
-    android:layout_marginLeft="26.67dp"
-    android:layout_marginRight="26.67dp"
-    android:layout_marginTop="646.33dp"
-    android:layout_marginBottom="70.33dp"
-    android:background="@drawable/drawable_shape_7"
-    android:scaleType="centerInside" />
-  
+      android:id="@+id/imgRankers_2"
+      android:layout_width="306.67dp"
+      android:layout_height="83.33dp"
+      android:layout_marginTop="148dp"
+      android:background="@drawable/drawable_shape_7"
+      android:scaleType="centerInside"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.503"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/lblRankersTelaPrincipal"
+      tools:visibility="visible" />
+
   <ImageView
-    android:layout_width="21.67dp"
-    android:layout_height="21.67dp"
-    android:layout_marginLeft="38dp"
-    android:layout_marginRight="300.33dp"
-    android:layout_marginTop="658.67dp"
-    android:layout_marginBottom="119.67dp"
-    android:scaleType="centerInside"
-    android:src="@drawable/drawable_image_1" />
-  
+      android:layout_width="21.67dp"
+      android:layout_height="21.67dp"
+      android:background="@drawable/drawable_shape_8"
+      android:scaleType="centerInside"
+      app:layout_constraintBottom_toBottomOf="@+id/imgRankers_2"
+      app:layout_constraintEnd_toEndOf="@+id/imgRankers_2"
+      app:layout_constraintHorizontal_bias="0.024"
+      app:layout_constraintStart_toStartOf="@+id/imgRankers_2"
+      app:layout_constraintTop_toTopOf="@+id/imgRankers_2"
+      app:layout_constraintVertical_bias="0.163"
+      tools:visibility="visible" />
+
   <ImageView
-    android:layout_width="21.67dp"
-    android:layout_height="21.67dp"
-    android:layout_marginLeft="38dp"
-    android:layout_marginRight="300.33dp"
-    android:layout_marginTop="549.67dp"
-    android:layout_marginBottom="228.67dp"
-    android:background="@drawable/drawable_shape_8"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="26.67dp"
-    android:layout_height="26.67dp"
-    android:layout_marginLeft="322.67dp"
-    android:layout_marginRight="10.67dp"
-    android:layout_marginTop="754.33dp"
-    android:layout_marginBottom="19dp"
-    android:background="@drawable/drawable_shape_9"
-    android:scaleType="centerInside" />
-</FrameLayout>
+      android:layout_width="26.67dp"
+      android:layout_height="26.67dp"
+      android:background="@drawable/drawable_shape_9"
+      android:scaleType="centerInside"
+      app:layout_constraintBottom_toBottomOf="@+id/imgRankers_1"
+      app:layout_constraintEnd_toEndOf="@+id/imgRankers_1"
+      app:layout_constraintHorizontal_bias="0.025"
+      app:layout_constraintStart_toStartOf="@+id/imgRankers_1"
+      app:layout_constraintTop_toTopOf="@+id/imgRankers_1"
+      app:layout_constraintVertical_bias="0.128"
+      tools:visibility="visible" />
+
+  <ImageButton
+      android:id="@+id/imageButton"
+      android:layout_width="268dp"
+      android:layout_height="43dp"
+      android:background="#00FFFFFF"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.422"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.027"
+      app:srcCompat="@drawable/drawable_shape_1" />
+
+  <ImageButton
+      android:id="@+id/btnPerfilTelaPrincipal"
+      android:layout_width="25dp"
+      android:layout_height="25dp"
+      android:background="#00FFFFFF"
+      android:scaleType="fitCenter"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.921"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.97"
+      app:srcCompat="@drawable/drawable_image_1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

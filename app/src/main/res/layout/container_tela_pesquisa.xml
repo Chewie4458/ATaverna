@@ -13,7 +13,7 @@
       android:layout_height="match_parent"
       android:background="@drawable/image_rectangle"
       android:scaleType="centerCrop"
-      tools:layout_editor_absoluteX="-16dp"
+      tools:layout_editor_absoluteX="-7dp"
       tools:layout_editor_absoluteY="0dp" />
 
   <ImageView
@@ -41,29 +41,35 @@
       android:id="@+id/image_rectangle3"
       android:layout_width="100dp"
       android:layout_height="100dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginEnd="25dp"
       android:background="@drawable/image_rectangle3"
       android:scaleType="centerInside"
-      tools:layout_editor_absoluteX="47dp"
-      tools:layout_editor_absoluteY="379dp" />
+      app:layout_constraintEnd_toStartOf="@+id/image_rectangle2"
+      app:layout_constraintHorizontal_bias="0.897"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/image_rectangle7" />
 
   <ImageView
       android:id="@+id/image_rectangle4"
       android:layout_width="100dp"
       android:layout_height="100dp"
+      android:layout_marginStart="25dp"
       android:background="@drawable/image_rectangle4"
       android:scaleType="centerInside"
-      tools:layout_editor_absoluteX="296dp"
+      app:layout_constraintStart_toEndOf="@+id/image_rectangle2"
       tools:layout_editor_absoluteY="379dp" />
 
   <ImageView
       android:id="@+id/image_rectangle5"
       android:layout_width="100dp"
       android:layout_height="100dp"
-      android:layout_marginEnd="52dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginEnd="48dp"
       android:background="@drawable/image_rectangle5"
       android:scaleType="centerInside"
       app:layout_constraintEnd_toEndOf="parent"
-      tools:layout_editor_absoluteY="259dp" />
+      app:layout_constraintTop_toBottomOf="@+id/image_rectangle9" />
 
   <ImageView
       android:id="@+id/image_rectangle6"
@@ -81,9 +87,10 @@
       android:id="@+id/image_rectangle7"
       android:layout_width="100dp"
       android:layout_height="100dp"
+      android:layout_marginStart="44dp"
       android:background="@drawable/image_rectangle7"
       android:scaleType="centerInside"
-      tools:layout_editor_absoluteX="47dp"
+      app:layout_constraintStart_toStartOf="parent"
       tools:layout_editor_absoluteY="259dp" />
 
   <ImageView
@@ -95,7 +102,7 @@
       android:background="@drawable/image_rectangle8"
       android:scaleType="centerInside"
       app:layout_constraintEnd_toStartOf="@+id/image_rectangle5"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toEndOf="@+id/image_rectangle7"
       tools:layout_editor_absoluteY="259dp" />
 
@@ -103,18 +110,20 @@
       android:id="@+id/image_rectangle9"
       android:layout_width="100dp"
       android:layout_height="100dp"
+      android:layout_marginStart="28dp"
       android:background="@drawable/image_rectangle9"
       android:scaleType="centerInside"
-      tools:layout_editor_absoluteX="296dp"
+      app:layout_constraintStart_toEndOf="@+id/image_rectangle6"
       tools:layout_editor_absoluteY="139dp" />
 
   <ImageView
       android:id="@+id/image_rectangle10"
       android:layout_width="100dp"
       android:layout_height="100dp"
+      android:layout_marginEnd="25dp"
       android:background="@drawable/image_rectangle10"
       android:scaleType="centerInside"
-      tools:layout_editor_absoluteX="47dp"
+      app:layout_constraintEnd_toStartOf="@+id/image_rectangle6"
       tools:layout_editor_absoluteY="139dp" />
 
   <ImageView
@@ -123,8 +132,11 @@
       android:layout_height="33.67dp"
       android:background="@drawable/image_rectangle11"
       android:scaleType="centerCrop"
-      tools:layout_editor_absoluteX="62dp"
-      tools:layout_editor_absoluteY="963dp" />
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0" />
 
   <TextView
       android:id="@+id/text_nao_encontrou_cadastre_aqui"
@@ -137,8 +149,10 @@
       android:text="Não encontrou sua música/álbum? Cadastre aqui"
       android:textColor="#FF000000"
       android:textSize="13.33dp"
-      tools:layout_editor_absoluteX="83dp"
-      tools:layout_editor_absoluteY="979dp" />
+      app:layout_constraintBottom_toBottomOf="@+id/image_rectangle11"
+      app:layout_constraintEnd_toEndOf="@+id/image_rectangle11"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/image_rectangle11" />
 
   <ImageButton
       android:id="@+id/imageButton2"

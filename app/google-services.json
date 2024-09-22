@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "23455339064",
+    "firebase_url": "https://ataverna-6f0c6-default-rtdb.firebaseio.com",
+    "project_id": "ataverna-6f0c6",
+    "storage_bucket": "ataverna-6f0c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23455339064:android:d8f4344001546554ebcccd",
+        "android_client_info": {
+          "package_name": "com.example.ataverna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "23455339064-sbgoi5dn9f78b3tsgdu8dt6i9884gmjr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ataverna",
+            "certificate_hash": "ba716ddff641fe0710555465494f91dbb7069b9d"
+          }
+        },
+        {
+          "client_id": "23455339064-k45b6nsocdhvcs4v1convrn1bvhoek61.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc0XYj8nnXZ1Ritir9UstNbqrikoVPe60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "23455339064-k45b6nsocdhvcs4v1convrn1bvhoek61.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

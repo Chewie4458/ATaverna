@@ -1,6 +1,10 @@
 package com.example.ataverna;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,24 +21,34 @@ public class TelaPesquisa extends BaseMainActivity {
     AlbumAdapter adapter;
     DatabaseReference mbase;
 
+
+    String queryString;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.container_tela_pesquisa);
 
-        mbase = FirebaseDatabase.getInstance().getReference();
+        mbase = FirebaseDatabase.getInstance().getReference("AlbumTeste");
 
         recResult = findViewById(R.id.recResult);
+
+        ImageButton btnPesquisa = findViewById(R.id.btnPesquisa);
+        EditText edtPesquisa = findViewById(R.id.edtPesquisa);
 
         // Mostra Recycler com linear layout
         recResult.setLayoutManager(
                 new LinearLayoutManager(this));
 
+        // Monta a queryString (valor da pesquisa)
+        queryString = String.valueOf(edtPesquisa.getText());
+
         // Query
         FirebaseRecyclerOptions<Album> options
                 = new FirebaseRecyclerOptions.Builder<Album>()
-                .setQuery(mbase.child("AlbumTeste"), Album.class)
+                .setQuery(mbase.orderByChild("nome").startAt(queryString)
+                .endAt(queryString + "\uf8ff"), Album.class)
                 .build();
 
         // Inicializa o Adapter
@@ -55,6 +69,25 @@ public class TelaPesquisa extends BaseMainActivity {
     {
         super.onStop();
         adapter.stopListening();
+    }
+
+    public void pesquisar(View v)
+    {
+        EditText edtPesquisa = findViewById(R.id.edtPesquisa);
+        // Monta a queryString (valor da pesquisa)
+        queryString = String.valueOf(edtPesquisa.getText());
+
+        // Query
+        FirebaseRecyclerOptions<Album> options
+                = new FirebaseRecyclerOptions.Builder<Album>()
+                .setQuery(mbase.orderByChild("nome").startAt(queryString)
+                        .endAt(queryString + "\uf8ff"), Album.class)
+                .build();
+
+        // Inicializa o Adapter
+        adapter = new AlbumAdapter(options);
+        // Conecta o Adapter com o Recycler
+        recResult.setAdapter(adapter);
     }
 
     @Override

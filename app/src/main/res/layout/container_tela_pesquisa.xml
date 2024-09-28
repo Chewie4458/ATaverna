@@ -62,11 +62,12 @@
       app:srcCompat="@drawable/container_ranking_vector1" />
 
   <ImageButton
-      android:id="@+id/imageButton3"
+      android:id="@+id/btnPesquisa"
       android:layout_width="33dp"
       android:layout_height="33dp"
       android:layout_marginBottom="10dp"
       android:background="#00FFFFFF"
+      android:onClick="pesquisar"
       android:scaleType="fitCenter"
       app:layout_constraintBottom_toBottomOf="@+id/image_rectangle1"
       app:layout_constraintEnd_toEndOf="@+id/image_rectangle1"
@@ -94,7 +95,7 @@
       android:ems="10"
       android:inputType="text"
       app:layout_constraintBottom_toBottomOf="@+id/image_rectangle1"
-      app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+      app:layout_constraintEnd_toStartOf="@+id/btnPesquisa"
       app:layout_constraintStart_toEndOf="@+id/imageButton2"
       app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

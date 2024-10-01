@@ -9,7 +9,7 @@ public class TelaRanking extends BaseMainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); // Chame super.onCreate primeiro
-        setContentView(R.layout.tela_principal);
+        setContentView(R.layout.tela_ranking_1);
     }
 
     @Override

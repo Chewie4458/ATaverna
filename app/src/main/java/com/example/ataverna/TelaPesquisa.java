@@ -55,6 +55,17 @@ public class TelaPesquisa extends BaseMainActivity {
         adapter = new AlbumAdapter(options);
         // Conecta o Adapter com o Recycler
         recResult.setAdapter(adapter);
+
+        adapter.setOnClickListener(new AlbumAdapter.OnClickListener() {
+            @Override
+            public void onClick(int position, Album model) {
+                Intent intent = new Intent(TelaPesquisa.this, TelaRanking.class);
+                // Passing the data to the
+                // EmployeeDetails Activity
+                //intent.putExtra(NEXT_SCREEN, model);
+                startActivity(intent);
+            }
+        });
     }
 
     // Função para começar a recuperar os dados

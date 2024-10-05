@@ -3,22 +3,33 @@ package com.example.ataverna;
 import static java.security.AccessController.getContext;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ataverna.databinding.TelaRanking1Binding;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.example.ataverna.databinding.AlbumBinding;
 import com.example.ataverna.Album;
 import com.example.ataverna.TelaPesquisa;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+
 
 public class AlbumAdapter extends FirebaseRecyclerAdapter<
         Album, AlbumAdapter.albunsViewholder> {
 
+    AlbumBinding binding;
+    Handler mainHandler = new Handler();
     private OnClickListener onClickListener;
 
     public AlbumAdapter(
@@ -67,7 +78,6 @@ public class AlbumAdapter extends FirebaseRecyclerAdapter<
     class albunsViewholder
             extends RecyclerView.ViewHolder {
         AlbumBinding binding;
-        TextView nome, artista, url;
         public albunsViewholder(@NonNull View itemView, AlbumBinding binding)
         {
             super(binding.getRoot());

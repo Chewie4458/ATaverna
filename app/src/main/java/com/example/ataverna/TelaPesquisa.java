@@ -1,5 +1,6 @@
 package com.example.ataverna;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -33,13 +34,14 @@ public class TelaPesquisa extends BaseMainActivity {
         mbase = FirebaseDatabase.getInstance().getReference("Album");
 
         recResult = findViewById(R.id.recResult);
+        btnPesquisar = findViewById(R.id.btnPesquisa);
 
         ImageButton btnPesquisa = findViewById(R.id.btnPesquisa);
         EditText edtPesquisa = findViewById(R.id.edtPesquisa);
 
         // Mostra Recycler com linear layout
         recResult.setLayoutManager(
-                new LinearLayoutManager(this));
+                new WrapContentLinearLayoutManager(TelaPesquisa.this, LinearLayoutManager.VERTICAL, false));
 
         // Monta a queryString (valor da pesquisa)
         queryString = String.valueOf(edtPesquisa.getText());
@@ -105,12 +107,15 @@ public class TelaPesquisa extends BaseMainActivity {
             @Override
             public void onClick(int position, Album model) {
                 Intent intent = new Intent(TelaPesquisa.this, TelaRanking.class);
-                // Passing the data to the
-                // EmployeeDetails Activity
                 intent.putExtra(NEXT_SCREEN, model);
                 startActivity(intent);
             }
         });
+    }
+
+    public void cadastrar(View v) {
+        Intent intent = new Intent(TelaPesquisa.this, SolicitaMusica.class);
+        startActivity(intent);
     }
 
     public void voltar(View v) {

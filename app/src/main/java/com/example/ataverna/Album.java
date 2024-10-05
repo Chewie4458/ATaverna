@@ -1,10 +1,13 @@
 package com.example.ataverna;
 
-public class Album {
+import java.io.Serializable;
+
+public class Album implements Serializable {
     private String nome;
     private String artista;
+    private String url;
 
-    public Album() {}
+    public Album()  {}
 
     public String getNome()
     {
@@ -22,5 +25,14 @@ public class Album {
     public void setArtista(String artista)
     {
         this.artista = artista;
+    }
+
+    public String getUrl()
+    {
+        return url;
+    }
+    public void setUrl(String url)
+    {
+        this.url = url;
     }
 }

@@ -67,7 +67,7 @@ public class AlbumAdapter extends FirebaseRecyclerAdapter<
     class albunsViewholder
             extends RecyclerView.ViewHolder {
         AlbumBinding binding;
-        TextView nome, artista;
+        TextView nome, artista, url;
         public albunsViewholder(@NonNull View itemView, AlbumBinding binding)
         {
             super(binding.getRoot());
@@ -77,6 +77,7 @@ public class AlbumAdapter extends FirebaseRecyclerAdapter<
         public void bind(Album model, OnClickListener onClickListener) {
             binding.nome.setText(model.getNome());
             binding.artista.setText(model.getArtista());
+            binding.url.setText(model.getUrl());
 
             itemView.setOnClickListener(view -> {
                 if (onClickListener != null) {

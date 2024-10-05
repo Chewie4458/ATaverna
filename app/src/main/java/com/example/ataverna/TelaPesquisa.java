@@ -20,7 +20,7 @@ public class TelaPesquisa extends BaseMainActivity {
     private RecyclerView recResult;
     AlbumAdapter adapter;
     DatabaseReference mbase;
-
+    ImageButton btnPesquisar;
 
     String queryString;
 
@@ -30,7 +30,7 @@ public class TelaPesquisa extends BaseMainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.container_tela_pesquisa);
 
-        mbase = FirebaseDatabase.getInstance().getReference("AlbumTeste");
+        mbase = FirebaseDatabase.getInstance().getReference("Album");
 
         recResult = findViewById(R.id.recResult);
 
@@ -60,13 +60,13 @@ public class TelaPesquisa extends BaseMainActivity {
             @Override
             public void onClick(int position, Album model) {
                 Intent intent = new Intent(TelaPesquisa.this, TelaRanking.class);
-                // Passing the data to the
-                // EmployeeDetails Activity
-                //intent.putExtra(NEXT_SCREEN, model);
+                intent.putExtra(NEXT_SCREEN, model);
                 startActivity(intent);
             }
         });
     }
+
+    public static final String NEXT_SCREEN = "tela_ranking_1";
 
     // Função para começar a recuperar os dados
     @Override protected void onStart()
@@ -99,6 +99,23 @@ public class TelaPesquisa extends BaseMainActivity {
         adapter = new AlbumAdapter(options);
         // Conecta o Adapter com o Recycler
         recResult.setAdapter(adapter);
+        onStart();
+
+        adapter.setOnClickListener(new AlbumAdapter.OnClickListener() {
+            @Override
+            public void onClick(int position, Album model) {
+                Intent intent = new Intent(TelaPesquisa.this, TelaRanking.class);
+                // Passing the data to the
+                // EmployeeDetails Activity
+                intent.putExtra(NEXT_SCREEN, model);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void voltar(View v) {
+        Intent intent = new Intent(TelaPesquisa.this, TelaPrincipal.class);
+        startActivity(intent);
     }
 
     @Override

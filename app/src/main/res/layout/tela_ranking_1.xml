@@ -127,6 +127,7 @@
       android:layout_marginBottom="123dp"
       android:background="#00FFFFFF"
       android:scaleType="fitCenter"
+      android:tint="#A4EFFB"
       app:layout_constraintBottom_toTopOf="@+id/imgComentarioRanking"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"

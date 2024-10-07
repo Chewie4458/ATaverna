@@ -15,15 +15,14 @@
         android:theme="@style/Theme.ATaverna"
         tools:targetApi="31">
         <activity
+            android:name=".SolicitaMusica"
+            android:exported="true" />
+        <activity
             android:name=".ImageLoader"
-            android:exported="true" >
-
-        </activity>
-        <!-- Definindo TelaRanking como a tela principal -->
+            android:exported="true"></activity> <!-- Definindo TelaRanking como a tela principal -->
         <activity
             android:name=".TelaRanking"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".TelaLogin"
             android:exported="true">

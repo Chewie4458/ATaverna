@@ -135,4 +135,17 @@
       app:layout_constraintVertical_bias="0.0"
       app:srcCompat="@drawable/container_ranking_vector" />
 
+  <TextView
+      android:id="@+id/lblAlbumNome"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/gemunu_libre_bold"
+      android:text="XXX"
+      android:textColor="@color/white"
+      android:textSize="24sp"
+      app:layout_constraintBottom_toTopOf="@+id/btnEstrelaRanking_3"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/imgAlbumRanking" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

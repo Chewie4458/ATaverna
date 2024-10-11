@@ -1,6 +1,9 @@
 package com.example.ataverna;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +12,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+
+import android.app.usage.NetworkStats;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -22,10 +28,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class TelaLogin extends BaseMainActivity {
     private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
+    FirebaseDatabase database;
     GoogleSignInClient googleSignInClient;
+    int RC_SIGN_IN=20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +46,12 @@ public class TelaLogin extends BaseMainActivity {
         super.onCreate(savedInstanceState);
 
         Button btnLogin = findViewById(R.id.btnLogin);
+        database = FirebaseDatabase.getInstance();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(
             GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("23455339064-sbgoi5dn9f78b3tsgdu8dt6i9884gmjr.apps.googleusercontent.com")
+                .requestIdToken("23455339064-k45b6nsocdhvcs4v1convrn1bvhoek61.apps.googleusercontent.com")
+                //.requestIdToken(getString(R.string.app_name))
                 .requestEmail().build();
 
         googleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -47,7 +62,13 @@ public class TelaLogin extends BaseMainActivity {
                 // Initialize sign in intent
                 Intent intent = googleSignInClient.getSignInIntent();
                 // Start activity for result
-                startActivityForResult(intent, 100);
+                startActivityForResult(intent, RC_SIGN_IN);
+            }
+
+            @NonNull
+            @Override
+            protected Object clone() throws CloneNotSupportedException {
+                return super.clone();
             }
         });
 
@@ -55,55 +76,64 @@ public class TelaLogin extends BaseMainActivity {
         FirebaseUser firebaseUser = auth.getCurrentUser();
         // Check condition
         if (firebaseUser != null) {
-            // When user already sign in redirect to profile activity
-            startActivity(new Intent(TelaLogin.this, TelaPrincipal.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            Intent intent=new Intent(TelaLogin.this, TelaPrincipal.class);
+            startActivity(intent);
+            finish();
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // Check condition
-        if (requestCode == 100) {
-            // When request code is equal to 100 initialize task
-            Task<GoogleSignInAccount> signInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
-            // check condition
-            if (signInAccountTask.isSuccessful()) {
-                // When google sign in successful initialize string
-                String s = "Google sign in successful";
-                // Display Toast
-                displayToast(s);
-                // Initialize sign in account
-                try {
-                    // Initialize sign in account
-                    GoogleSignInAccount googleSignInAccount = signInAccountTask.getResult(ApiException.class);
-                    // Check condition
-                    if (googleSignInAccount != null) {
-                        // When sign in account is not equal to null initialize auth credential
-                        AuthCredential authCredential = GoogleAuthProvider.getCredential(googleSignInAccount.getIdToken(), null);
-                        // Check credential
-                        auth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                // Check condition
-                                if (task.isSuccessful()) {
-                                    // When task is successful redirect to profile activity display Toast
-                                    startActivity(new Intent(TelaLogin.this, TelaPrincipal.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                                    displayToast("Firebase authentication successful");
-                                } else {
-                                    // When task is unsuccessful display Toast
-                                    displayToast("Authentication Failed :" + task.getException().getMessage());
-                                }
-                            }
-                        });
-                    }
-                } catch (ApiException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                Log.e("LoginError", "Error: " + signInAccountTask.getException().getMessage());
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode,resultCode, data);
+        if(requestCode==RC_SIGN_IN){
+            Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                Task<GoogleSignInAccount> signInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
+                GoogleSignInAccount account = signInAccountTask.getResult(ApiException.class);
+                firebaseAuth(account.getIdToken());
+
+            } catch (ApiException e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private void firebaseAuth(String idToken) {
+        AuthCredential credential= GoogleAuthProvider.getCredential(idToken, null);
+        auth.signInWithCredential(credential).
+            addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+            public void setUser(NetworkStats.Bucket user) {
+                this.user = user;
+            }
+
+            private NetworkStats.Bucket user;
+            DatabaseReference usuarioBD = referencia.child("Usuario");
+
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    // inserir usuário no banco
+                    FirebaseUser usuario = auth.getCurrentUser();
+//                    HashMap<String, Object> map = new HashMap<>();
+//                    map.put("id", user.getUid());
+//                    map.put("name", user.getState());
+//                    map.put("profile", user.getClass().toString());
+                      //usuarioBD.child(usuario.getUid()).child("nome").setValue(usuario.getDisplayName());
+                      //usuarioBD.child(usuario.getUid()).child("perfil").setValue(usuario.getClass().toString());
+                      usuarioBD.child("teste").child("perfil").setValue(usuario.getClass().toString());
+
+                    //database.getReference().child("users").child(String.valueOf(user.getUid())).getValue();
+                    Intent intent = new Intent(TelaLogin.this, TelaPrincipal.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(TelaLogin.this, "Something must be wrong"
+                            ,Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void displayToast(String s) {

@@ -206,16 +206,14 @@
 
   <ImageButton
       android:id="@+id/btnPerfilTelaPrincipal"
-      android:layout_width="25dp"
-      android:layout_height="25dp"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_marginEnd="24dp"
+      android:layout_marginBottom="24dp"
       android:background="#00FFFFFF"
       android:scaleType="fitCenter"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.921"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.97"
       app:srcCompat="@drawable/drawable_image_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

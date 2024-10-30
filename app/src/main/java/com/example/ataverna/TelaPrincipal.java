@@ -2,7 +2,9 @@ package com.example.ataverna;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,13 +19,12 @@ public class TelaPrincipal extends AppCompatActivity {
     private RankersAdapter adapter; // Adaptador personalizado para exibir os dados do modelo Rankers
     private DatabaseReference mDatabase; // Referência do Firebase Realtime Database
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_principal); // Defina o layout para esta activity
 
-        ImageButton btnUsuario = findViewById(R.id.btnPerfilTelaPrincipal);
+        ImageButton btnPesquisa = findViewById(R.id.btnToPesquisa);
 
         // Inicializa a referência ao nó do banco de dados do Firebase onde os dados do Rankers estão armazenados
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Rankers");
@@ -41,9 +42,12 @@ public class TelaPrincipal extends AppCompatActivity {
         adapter = new RankersAdapter(options);
         recyclerView.setAdapter(adapter);
 
-        btnUsuario.setOnClickListener(View -> {
-            Intent intent = new Intent(TelaPrincipal.this, TelaUsuario.class);
-            startActivity(intent);
+        btnPesquisa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TelaPrincipal.this, TelaPesquisa.class);
+                startActivity(intent);
+            }
         });
     }
 

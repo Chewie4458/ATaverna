@@ -47,6 +47,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".TelaPrincipal"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".TelaPrincipal"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".TelaRanking"
             android:exported="true"></activity>
 

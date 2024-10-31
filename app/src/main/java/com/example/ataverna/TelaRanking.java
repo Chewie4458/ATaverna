@@ -83,13 +83,13 @@ public class TelaRanking extends BaseMainActivity {
                 usuarioBD.child(auth.getUid()).child(finalAlbumList.getNome())
                         .child("comentario").setValue(comentario);
 
-                // Salva um registro de ranking
-                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                // Monta o id do registro
+                String id = finalAlbumList.getNome() + "-" + auth.getUid();
 
-                ranker.child(timestamp.getTime() + "").child("nome").setValue(usuario);
-                ranker.child(timestamp.getTime() + "").child("album").setValue(finalAlbumList.getNome());
-                ranker.child(timestamp.getTime() + "").child("nota").setValue(nota);
-                ranker.child(timestamp.getTime() + "").child("comentario").setValue(comentario);
+                ranker.child(id).child("nome").setValue(usuario);
+                ranker.child(id).child("album").setValue(finalAlbumList.getNome());
+                ranker.child(id).child("nota").setValue(nota);
+                ranker.child(id).child("comentario").setValue(comentario);
 
                 Intent intent = new Intent(TelaRanking.this, TelaPesquisa.class);
                 startActivity(intent);
@@ -113,7 +113,9 @@ public class TelaRanking extends BaseMainActivity {
         usuarioLogado.child(finalAlbumList.getNome()).child("nota").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                nota = snapshot.getValue().toString(); // se não tem o registro para o album da erro
+                if (snapshot.exists() && snapshot.getValue() != null) {
+                    nota = snapshot.getValue().toString();
+                }
 
                 switch (nota) {
                     case "1":
@@ -145,7 +147,9 @@ public class TelaRanking extends BaseMainActivity {
         usuarioLogado.child(finalAlbumList.getNome()).child("comentario").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                comentario = snapshot.getValue().toString(); // se não tem o registro para o album da erro
+                if (snapshot.exists() && snapshot.getValue() != null) {
+                    comentario = snapshot.getValue().toString();
+                }
 
                 edtComentario.setText(comentario);
             }

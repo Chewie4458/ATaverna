@@ -3,6 +3,8 @@ package com.example.ataverna;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
@@ -22,9 +24,15 @@ public class TelaPrincipal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.tela_principal); // Defina o layout para esta activity
 
         ImageButton btnPesquisa = findViewById(R.id.btnToPesquisa);
+        ImageButton btnPerfilTelaPrincipal = findViewById(R.id.btnPerfilTelaPrincipal);
 
         // Inicializa a referência ao nó do banco de dados do Firebase onde os dados do Rankers estão armazenados
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Rankers");
@@ -35,7 +43,7 @@ public class TelaPrincipal extends AppCompatActivity {
 
         // Configura as opções para o FirebaseRecyclerAdapter
         FirebaseRecyclerOptions<Rankers> options = new FirebaseRecyclerOptions.Builder<Rankers>()
-                .setQuery(mDatabase.orderByChild("nome"), Rankers.class)
+                .setQuery(mDatabase.orderByChild("hora"), Rankers.class)
                 .build();
 
         // Instancia o adaptador e o conecta ao RecyclerView
@@ -46,6 +54,14 @@ public class TelaPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TelaPrincipal.this, TelaPesquisa.class);
+                startActivity(intent);
+            }
+        });
+
+        btnPerfilTelaPrincipal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TelaPrincipal.this, TelaUsuario.class);
                 startActivity(intent);
             }
         });

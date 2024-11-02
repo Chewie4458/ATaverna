@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -83,13 +85,19 @@ public class TelaRanking extends BaseMainActivity {
                 usuarioBD.child(auth.getUid()).child(finalAlbumList.getNome())
                         .child("comentario").setValue(comentario);
 
-                // Monta o id do registro
-                String id = finalAlbumList.getNome() + "-" + auth.getUid();
+                if (!comentario.isEmpty()) {
+                    // Recupera o horário
+                    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-                ranker.child(id).child("nome").setValue(usuario);
-                ranker.child(id).child("album").setValue(finalAlbumList.getNome());
-                ranker.child(id).child("nota").setValue(nota);
-                ranker.child(id).child("comentario").setValue(comentario);
+                    // Monta o id do registro
+                    String id = finalAlbumList.getNome() + "-" + auth.getUid();
+
+                    ranker.child(id).child("nome").setValue(usuario);
+                    ranker.child(id).child("album").setValue(finalAlbumList.getNome());
+                    ranker.child(id).child("nota").setValue(nota);
+                    ranker.child(id).child("comentario").setValue(comentario);
+                    ranker.child(id).child("hora").setValue(-timestamp.getTime());
+                }
 
                 Intent intent = new Intent(TelaRanking.this, TelaPesquisa.class);
                 startActivity(intent);

@@ -3,6 +3,8 @@ package com.example.ataverna;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -27,7 +29,6 @@ public class TelaPesquisa extends BaseMainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.container_tela_pesquisa);
 

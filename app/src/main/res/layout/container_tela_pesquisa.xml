@@ -71,13 +71,14 @@
       android:background="#00FFFFFF"
       android:onClick="pesquisar"
       android:scaleType="fitCenter"
+      android:tint="@color/black"
       app:layout_constraintBottom_toBottomOf="@+id/image_rectangle1"
       app:layout_constraintEnd_toEndOf="@+id/image_rectangle1"
       app:layout_constraintHorizontal_bias="0.983"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="1.0"
-      app:srcCompat="@drawable/ic_x_bold" />
+      app:srcCompat="@drawable/drawable_image" />
 
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/recResult"

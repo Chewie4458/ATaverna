@@ -31,7 +31,8 @@
       android:id="@+id/lblAlbumTelaPrincipal"
       android:layout_width="183dp"
       android:layout_height="39dp"
-      android:layout_marginTop="34dp"
+      android:layout_marginStart="24dp"
+      android:layout_marginTop="24dp"
       android:fontFamily="@font/gemunu_libre_bold"
       android:gravity="left|center_vertical"
       android:includeFontPadding="false"
@@ -40,8 +41,6 @@
       android:text="Ultimos Álbuns"
       android:textColor="#FFFFFFFF"
       android:textSize="25.67dp"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.315"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/btnToPesquisa"
       tools:visibility="visible" />
@@ -50,7 +49,8 @@
       android:id="@+id/lblRankersTelaPrincipal"
       android:layout_width="148dp"
       android:layout_height="36dp"
-      android:layout_marginTop="28dp"
+      android:layout_marginStart="24dp"
+      android:layout_marginTop="24dp"
       android:fontFamily="@font/gemunu_libre_bold"
       android:gravity="left|center_vertical"
       android:includeFontPadding="false"
@@ -59,8 +59,6 @@
       android:text="Rankers"
       android:textColor="#FFFFFFFF"
       android:textSize="25.67dp"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.276"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/imgAlbum_1"
       tools:visibility="visible" />
@@ -93,15 +91,17 @@
 
   <ImageButton
       android:id="@+id/btnToPesquisa"
-      android:layout_width="268dp"
+      android:layout_width="0dp"
       android:layout_height="43dp"
+      android:layout_marginStart="24dp"
+      android:layout_marginTop="24dp"
+      android:layout_marginEnd="24dp"
       android:background="#00FFFFFF"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.422"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.027"
+      app:layout_constraintVertical_bias="0.0"
       app:srcCompat="@drawable/drawable_shape_1" />
 
   <ImageButton
@@ -116,17 +116,15 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.926"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/rankers_recicla"
       app:srcCompat="@drawable/drawable_image_1" />
 
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/rankers_recicla"
       android:layout_width="380dp"
-      android:layout_height="472dp"
-      app:layout_constraintBottom_toBottomOf="@+id/bkgTelaPrincipal"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toTopOf="@+id/btnPerfilTelaPrincipal"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/lblRankersTelaPrincipal"
-      app:layout_constraintVertical_bias="0.082" />
+      app:layout_constraintTop_toBottomOf="@+id/lblRankersTelaPrincipal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

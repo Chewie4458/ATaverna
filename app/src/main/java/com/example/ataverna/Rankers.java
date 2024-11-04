@@ -6,6 +6,7 @@ public class Rankers {
     private String comentario;
     private String album;
     private String nota;
+    private Long hora;
 
     public String getNome() {
         return nome;
@@ -39,6 +40,10 @@ public class Rankers {
         return this.nota = nota;
     }
 
+    public Long getHora() { return hora; }
 
+    public void setHora(Long hora) {
+        this.hora = hora;
+    }
 
 }

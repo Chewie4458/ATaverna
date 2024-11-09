@@ -14,6 +14,19 @@
       tools:layout_editor_absoluteX="0dp"
       tools:layout_editor_absoluteY="0dp" />
 
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rvAlbuns"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="16dp"
+      app:layout_constraintBottom_toTopOf="@+id/lblRankersTelaPrincipal"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/lblAlbumTelaPrincipal" />
+
   <ImageView
       android:id="@+id/icPesquisaPrincipal"
       android:layout_width="23.33dp"
@@ -38,7 +51,7 @@
       android:includeFontPadding="false"
       android:maxLines="1"
       android:singleLine="true"
-      android:text="Ultimos Álbuns"
+      android:text="Álbuns Em Alta"
       android:textColor="#FFFFFFFF"
       android:textSize="25.67dp"
       app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +63,6 @@
       android:layout_width="148dp"
       android:layout_height="36dp"
       android:layout_marginStart="24dp"
-      android:layout_marginTop="24dp"
       android:fontFamily="@font/gemunu_libre_bold"
       android:gravity="left|center_vertical"
       android:includeFontPadding="false"
@@ -59,34 +71,10 @@
       android:text="Rankers"
       android:textColor="#FFFFFFFF"
       android:textSize="25.67dp"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/imgAlbum_1"
-      tools:visibility="visible" />
-
-  <ImageView
-      android:id="@+id/imgAlbum_2"
-      android:layout_width="116.67dp"
-      android:layout_height="116.67dp"
-      android:layout_marginTop="12dp"
-      android:layout_marginEnd="92dp"
-      android:background="@drawable/drawable_shape_3"
-      android:scaleType="centerInside"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/lblAlbumTelaPrincipal"
-      tools:visibility="visible" />
-
-  <ImageView
-      android:id="@+id/imgAlbum_1"
-      android:layout_width="116.67dp"
-      android:layout_height="116.67dp"
-      android:layout_marginTop="12dp"
-      android:layout_marginEnd="20dp"
-      android:background="@drawable/drawable_shape_5"
-      android:scaleType="centerInside"
-      app:layout_constraintEnd_toStartOf="@+id/imgAlbum_2"
-      app:layout_constraintHorizontal_bias="0.882"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/lblAlbumTelaPrincipal"
+      app:layout_constraintTop_toBottomOf="@+id/btnToPesquisa"
+      app:layout_constraintVertical_bias="0.39"
       tools:visibility="visible" />
 
   <ImageButton

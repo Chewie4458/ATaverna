@@ -24,6 +24,7 @@ public class RankersAdapter extends FirebaseRecyclerAdapter<Rankers, RankersAdap
         holder.nome.setText(model.getNome());
         holder.comentario.setText(model.getComentario());
         holder.album.setText(model.getAlbum());
+        holder.nota.setText(model.getNota());
     }
 
     // Inflates the ranker_item layout for each item in RecyclerView
@@ -36,14 +37,14 @@ public class RankersAdapter extends FirebaseRecyclerAdapter<Rankers, RankersAdap
 
     // ViewHolder subclass to define references to each view component in ranker_item.xml
     class RankersViewHolder extends RecyclerView.ViewHolder {
-        TextView nome, comentario, album; //nota;
+        TextView nome, comentario, album, nota;
 
         public RankersViewHolder(@NonNull View itemView) {
             super(itemView);
             nome = itemView.findViewById(R.id.nome);
             comentario = itemView.findViewById(R.id.comentario);
             album = itemView.findViewById(R.id.album);
-            //nota = itemView.findViewById(R.id.nota);
+            nota = itemView.findViewById(R.id.nota);
         }
     }
 }

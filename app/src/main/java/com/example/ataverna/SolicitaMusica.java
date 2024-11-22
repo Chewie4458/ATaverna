@@ -1,11 +1,13 @@
 package com.example.ataverna;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -32,6 +34,7 @@ public class SolicitaMusica extends AppCompatActivity {
         setContentView(R.layout.activity_solicita_musica);
 
         Button btnSolicita = findViewById(R.id.btnSolicita);
+        ImageButton btnVoltar = findViewById(R.id.btnVoltar);
         EditText txtNomeSolicitado = findViewById(R.id.txtNomeSolicitado);
 
         DatabaseReference albumSolicitado = referencia.child("AlbumSolicitado");
@@ -51,6 +54,14 @@ public class SolicitaMusica extends AppCompatActivity {
                 albumSolicitado.child(timestamp.getTime() + "").child("nome").setValue(texto);
                 Toast.makeText(getApplicationContext(), "Solicitação feita com sucesso!", Toast.LENGTH_SHORT).show();
                 txtNomeSolicitado.setText("");
+            }
+        });
+
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SolicitaMusica.this, TelaPesquisa.class);
+                startActivity(intent);
             }
         });
     }

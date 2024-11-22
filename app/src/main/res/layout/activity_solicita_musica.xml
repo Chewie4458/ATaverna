@@ -17,6 +17,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/container_ranking_rectangle" />
 
+    <ImageButton
+        android:id="@+id/btnVoltar"
+        android:layout_width="33dp"
+        android:layout_height="24dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.039"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.016"
+        app:srcCompat="@drawable/container_ranking_vector1" />
+
     <EditText
         android:id="@+id/txtNomeSolicitado"
         android:layout_width="389dp"

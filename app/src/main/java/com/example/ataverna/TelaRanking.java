@@ -41,6 +41,7 @@ public class TelaRanking extends BaseMainActivity {
     public String nota = "0";
     public String comentario = "";
     public String usuario = "";
+    public Integer reviews = 0;
 
     private FirebaseAuth auth = FirebaseAuth.getInstance();
     private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
@@ -62,6 +63,7 @@ public class TelaRanking extends BaseMainActivity {
         // Define as variáveis do banco ("tabelas")
         DatabaseReference usuarioBD = referencia.child("Usuario");
         DatabaseReference ranker = referencia.child("Rankers");
+        DatabaseReference album = referencia.child("Album");
 
         if (getIntent().hasExtra(TelaPesquisa.NEXT_SCREEN)) {
             albumList = (Album) getIntent().getSerializableExtra(TelaPesquisa.NEXT_SCREEN);
@@ -85,6 +87,9 @@ public class TelaRanking extends BaseMainActivity {
                 usuarioBD.child(auth.getUid()).child(finalAlbumList.getNome())
                         .child("comentario").setValue(comentario);
 
+                // Aumenta o número de rankings
+                album.child(finalAlbumList.getNome()).child("reviews").setValue((reviews + 1)*(-1));
+
                 if (!comentario.isEmpty()) {
                     // Recupera o horário
                     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -99,8 +104,24 @@ public class TelaRanking extends BaseMainActivity {
                     ranker.child(id).child("hora").setValue(-timestamp.getTime());
                 }
 
-                Intent intent = new Intent(TelaRanking.this, TelaPesquisa.class);
+                Intent intent = new Intent(TelaRanking.this, TelaPrincipal.class);
                 startActivity(intent);
+            }
+        });
+
+        album.child(finalAlbumList.getNome()).child("reviews").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                reviews = dataSnapshot.getValue(Integer.class);
+                if (reviews == null) {
+                    reviews = 0;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors here
+                System.out.println("Error updating reviews: " + databaseError.getMessage());
             }
         });
 

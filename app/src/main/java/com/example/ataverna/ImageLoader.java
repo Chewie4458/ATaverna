@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ataverna.databinding.ActivityImageLoaderBinding;
 
@@ -20,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,10 +33,12 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class ImageLoader extends AppCompatActivity {
-    ActivityImageLoaderBinding binding;
-    Handler mainHandler = new Handler();
+    private RecyclerView recResult;
+    static ActivityImageLoaderBinding binding;
+    static Handler mainHandler = new Handler();
     private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
-
+    AlbumCapasAdapter adapter;
+    DatabaseReference mbase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,69 +48,27 @@ public class ImageLoader extends AppCompatActivity {
         binding = ActivityImageLoaderBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //DatabaseReference album = referencia.child("Album").child("0DFYbYCcHCEJPcN1hODG6K").child("-O6x9VcQnRLr_VxqAV5e").child("capa").child("url");
+        mbase = FirebaseDatabase.getInstance().getReference("Album");
+        recResult = findViewById(R.id.rvAlbuns);
 
-        String queryText = "American Idiot";
-
-//        DatabaseReference albumTeste = referencia.child("AlbumTeste").child(queryText).child("capa").child("url");
-//
         final String[] url = {"https://i.scdn.co/image/ab67616d0000b273ed801e58a9ababdea6ac7ce4"};
-//
-//        albumTeste.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                url[0] = snapshot.getValue().toString();
-//
-//                new FetchImage(url[0]).start();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                url[0] = error.toString();
-//            }
-//        });
 
-        DatabaseReference albumTeste = referencia.child("AlbumTeste");
+        //recResult.setLayoutManager(new GridLayoutManager(this, 3));
+        recResult.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        Query qryTeste = albumTeste.startAt(queryText)
-                .endAt(queryText+"\uf8ff");
+        // Query
+        FirebaseRecyclerOptions<Album> options
+                = new FirebaseRecyclerOptions.Builder<Album>()
+                .setQuery(mbase.orderByChild("nome"), Album.class)
+                .build();
 
-        ChildEventListener childEventListener = new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
-//               url[0] = snapshot.getValue().toString();
-//
-//               new FetchImage(url[0]).start();
-                System.out.println("added");
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
-//                url[0] = snapshot.getValue().toString();
-//
-//                new FetchImage(url[0]).start();
-                System.out.println("changed");
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                // ...
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
-                // ...
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // ...
-            }
-        };
-        qryTeste.addChildEventListener(childEventListener);
+        // Inicializa o Adapter
+        adapter = new AlbumCapasAdapter(options);
+        // Conecta o Adapter com o Recycler
+        recResult.setAdapter(adapter);
     }
 
-    class FetchImage extends Thread{
+    static class FetchImage extends Thread{
         String URL;
         Bitmap bitmap;
 
@@ -125,9 +89,26 @@ public class ImageLoader extends AppCompatActivity {
             mainHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    binding.imgTeste.setImageBitmap(bitmap);
+                    //binding.imgTeste.setImageBitmap(bitmap);
                 }
             });
         }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (adapter != null) {
+            adapter.startListening();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (adapter != null) {
+            adapter.stopListening();
+        }
+    }
+
 }
